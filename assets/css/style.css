@@ -10854,9 +10854,12 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
+html {
+  overflow: hidden;
+}
+
 body {
   color: #021844;
-  overflow: hidden;
 }
 
 header {

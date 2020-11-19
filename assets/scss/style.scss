@@ -22,9 +22,12 @@
   }
 }
 
+html {
+  overflow: hidden;
+}
+
 body {
   color: rgb(2, 24, 68);
-  overflow: hidden;
 }
 //temp
 header {

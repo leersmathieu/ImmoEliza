@@ -1,3 +1,13 @@
+<?php
+ if(isset($_POST['submit'])){
+  $street= filter_var ( $_POST['street'], FILTER_SANITIZE_STRING);
+  $number = filter_var ( $_POST['number'], FILTER_SANITIZE_NUMBER_INT);
+  $postal = filter_var ( $_POST['postal'], FILTER_SANITIZE_NUMBER_INT);
+  $city = filter_var ( $_POST['city'], FILTER_SANITIZE_STRING);
+  $type = filter_var ( $_POST['type'], FILTER_SANITIZE_STRING);
+ }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -78,7 +88,7 @@
                 </div>
               </div>
             </div>
-            <button type="button" class="submitButton" id="submitButton">
+            <button type="submit" class="submitButton" name="submit" id="submitButton">
               <!-- Change button to submit -->
               Submit
             </button>
@@ -94,43 +104,26 @@
             <div>
               <h3>Votre bien</h3>
               <ul>
-                <li>
-                  Type :
-                  <? php ?>
-                </li>
-                <li>
-                  Adresse :
-                  <? php ?>
-                </li>
-                <li>...</li>
+                <li>Type : <?php echo $type?></li>
+                <li>Adresse : <?php echo "$number $street, $postal $city"?></li>
+                <li>Nombre de chambre : <?php echo $bedroom ?></li>
               </ul>
             </div>
             <ul class="mt-auto">
               <li>
-                Type :
-                <? php ?>
-              </li>
-              <li>
-                Adresse :
-                <? php ?>
-              </li>
-              <li>...</li>
+                Surface : <?php echo $surface ?></li>
+              <li></li>
+              <li></li>
             </ul>
             <ul class="mt-auto">
-              <li>
-                Type :
-                <? php ?>
-              </li>
-              <li>
-                Adresse :
-                <? php ?>
-              </li>
-              <li>...</li>
+              <li></li>
+              <li></li>
+              <li></li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-4">
         <div class="col-4 offset-2">
           <p class="mb-0">
             Prix estimé :
