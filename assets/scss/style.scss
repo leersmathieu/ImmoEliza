@@ -1,5 +1,6 @@
 @import "variable_override";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "header";
 
 @keyframes disappear {
   0% {
@@ -18,21 +19,24 @@
   }
   100% {
     opacity: 1;
-    transform: translateY(-500px);
+    transform: translateY(-430px);
   }
 }
 
-html {
-  overflow: hidden;
-}
-
 body {
+  max-height: 200vh;
   color: rgb(2, 24, 68);
 }
 //temp
 header {
   height: 70px;
+  z-index: 10;
 }
+
+section {
+  z-index: -1;
+}
+
 //temp
 .typeCard {
   width: 50%;

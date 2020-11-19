@@ -10802,6 +10802,14 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
+.navbar {
+  height: 70px;
+}
+
+.navbar-brand img {
+  height: 70px;
+}
+
 @-webkit-keyframes disappear {
   0% {
     opacity: 1;
@@ -10836,8 +10844,8 @@ a.text-dark:hover, a.text-dark:focus {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(-500px);
-            transform: translateY(-500px);
+    -webkit-transform: translateY(-430px);
+            transform: translateY(-430px);
   }
 }
 
@@ -10849,21 +10857,23 @@ a.text-dark:hover, a.text-dark:focus {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(-500px);
-            transform: translateY(-500px);
+    -webkit-transform: translateY(-430px);
+            transform: translateY(-430px);
   }
 }
 
-html {
-  overflow: hidden;
-}
-
 body {
+  max-height: 200vh;
   color: #021844;
 }
 
 header {
   height: 70px;
+  z-index: 10;
+}
+
+section {
+  z-index: -1;
 }
 
 .typeCard {

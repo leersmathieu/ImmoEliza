@@ -1,11 +1,17 @@
 <?php
- if(isset($_POST['submit'])){
+$appear="beforeSubmit";
+$none = "d-none";
+  if(isset($_POST['submit'])){
+  $none = "";
+  $appear = "appear";
+  $disappear = "disappear";
   $street= filter_var ( $_POST['street'], FILTER_SANITIZE_STRING);
   $number = filter_var ( $_POST['number'], FILTER_SANITIZE_NUMBER_INT);
   $postal = filter_var ( $_POST['postal'], FILTER_SANITIZE_NUMBER_INT);
   $city = filter_var ( $_POST['city'], FILTER_SANITIZE_STRING);
   $type = filter_var ( $_POST['type'], FILTER_SANITIZE_STRING);
- }
+  echo "";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +33,7 @@
 </head>
 
 <body>
+  <header>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container-fluid">
@@ -56,10 +63,12 @@
             </div>
         </div>
     </nav>
-    <section class="container-fluid" id="formSection">
+  </header>
+
+    <section class="container-fluid <?php echo $disappear ?>" id="formSection">
       <div class="row">
         <div class="col-12 col-md-8 offset-md-2 mainForm">
-          <form>
+          <form method="post">
             <h2>Formulaire</h2>
             <div class="form-row">
               <div class="form-group col-9">
@@ -122,37 +131,37 @@
               </div>
             </div>
             <button type="submit" class="submitButton" name="submit" id="submitButton">
-              <!-- Change button to submit -->
               Submit
             </button>
           </form>
+
         </div>
       </div>
     </section>
 
-    <section class="container-fluid beforeSubmit" id="afterSubmit">
+    <section class="container-fluid <?php echo "$none "; echo $appear; ?>" id="afterSubmit">
       <div class="row">
         <div class="col col-md-8 offset-md-2 info">
           <div class="d-flex justify-content-around">
             <div>
               <h3>Votre bien</h3>
               <ul>
-                <li>Type : <?php echo $type?></li>
-                <li>Adresse : <?php echo "$number $street, $postal $city"?></li>
-                <li>Nombre de chambre : <?php echo $bedroom ?></li>
+                  <li>Type : <?php echo $type?></li>
+                  <li>Adresse : <?php echo "$number $street, $postal $city" ?></li>
+                  <li>Nombre de chambre : <?php echo $bedroom ?></li>
+                </ul>
+              </div>
+              <ul class='mt-auto'>
+                <li>
+                  Surface : $surface </li>
+                <li></li>
+                <li></li>
               </ul>
-            </div>
-            <ul class="mt-auto">
-              <li>
-                Surface : <?php echo $surface ?></li>
-              <li></li>
-              <li></li>
-            </ul>
-            <ul class="mt-auto">
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
+              <ul class='mt-auto'>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
           </div>
         </div>
       </div>
