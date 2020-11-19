@@ -66,6 +66,7 @@ $none = "d-none";
   </header>
 
     <section class="container-fluid <?php echo $disappear ?>" id="formSection">
+
       <div class="row">
         <div class="col-12 col-md-8 offset-md-2 mainForm">
           <form method="post">
@@ -177,6 +178,47 @@ $none = "d-none";
         </div>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small bg-dark pt-4">
+        <!-- Footer Links -->
+        <div class="container-fluid text-center">
+            <div class="row">
+                <div class="col-lg-6 mt-md-0 mt-3">
+                    <!-- Content -->
+                    <h5 class="text-uppercase">Footer Content</h5>
+                    <p>Here you can use rows and columns to organize your footer content.</p>
+                </div>
+                <hr class="w-100 d-lg-none">
+                <div class="col-lg-6 mb-md-0">
+                    <!-- Contact -->
+                    <h5 class="text-uppercase">Contact</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="w-100 d-lg-none">
+            </div>
+        </div>
+        <!-- Footer Links -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center pb-3">© 2020 Copyright:
+            <a href="#"> immoeliza.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 
     <!-- JS, Popper.js, and jQuery -->
     <script src="assets/node_modules/jquery/dist/jquery.slim.js"></script>
