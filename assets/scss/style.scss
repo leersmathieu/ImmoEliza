@@ -1,0 +1,91 @@
+@import "variable_override";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-500px);
+  }
+}
+
+body {
+  color: rgb(2, 24, 68);
+  overflow: hidden;
+}
+//temp
+header {
+  height: 70px;
+}
+//temp
+.typeCard {
+  width: 50%;
+  input {
+    display: none;
+  }
+  label {
+    padding: 10px 0;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    border: solid 1px rgba(1, 151, 246, 0.4);
+  }
+  input:checked + label {
+    border: solid 2px rgba(2, 24, 68, 0.8);
+  }
+}
+.typeImg {
+  height: 50px;
+  width: 50px;
+}
+
+.mainForm {
+  border: solid 3px rgb(2, 24, 68);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.submitButton {
+  color: white;
+  background-color: rgba(1, 151, 246, 0.6);
+  padding: 5px 7px;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+}
+
+.disappear {
+  animation: disappear 2s forwards;
+}
+
+.info {
+  border: solid 3px rgb(2, 24, 68);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.beforeSubmit {
+  opacity: 0;
+  transform: translateY(500px);
+}
+.appear {
+  animation: appear 2s forwards;
+}
+.houseTemp {
+  width: 100%;
+  height: 80%;
+}
