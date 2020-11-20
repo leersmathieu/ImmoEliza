@@ -10,7 +10,11 @@ $none = "d-none";
   $postal = filter_var ( $_POST['postal'], FILTER_SANITIZE_NUMBER_INT);
   $city = filter_var ( $_POST['city'], FILTER_SANITIZE_STRING);
   $type = filter_var ( $_POST['type'], FILTER_SANITIZE_STRING);
-  echo "";
+  $surface = filter_var ( $_POST['surface'], FILTER_SANITIZE_NUMBER_INT);
+  $bedroom = filter_var ( $_POST['bedroom'], FILTER_SANITIZE_NUMBER_INT);
+  $status = filter_var ( $_POST['status'], FILTER_SANITIZE_NUMBER_INT);
+  $garden = filter_var ( $_POST['garden'], FILTER_SANITIZE_NUMBER_INT);
+  $terrace = filter_var ( $_POST['terrace'], FILTER_SANITIZE_NUMBER_INT);
   }
 ?>
 <!DOCTYPE html>
@@ -35,7 +39,7 @@ $none = "d-none";
 <body>
   <header>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="assets/images/immoEliza.png" alt="">
@@ -66,7 +70,6 @@ $none = "d-none";
   </header>
 
     <section class="container-fluid <?php echo $disappear ?>" id="formSection">
-
       <div class="row">
         <div class="col-12 col-md-8 offset-md-2 mainForm">
           <form method="post">
@@ -91,6 +94,39 @@ $none = "d-none";
                 <input type="text" class="form-control" name="city" />
               </div>
             </div>
+            <div class="form-row">
+              <div class="form-group col-4  mt-auto">
+                <label for="surface">Surface habitable</label>
+                <input type="number" class="form-control" name="surface" />
+              </div>
+              <div class="form-group col-4  mt-auto">
+                <label for="bedroom">Nombre de chambre(s)</label>
+                <input type="number" class="form-control" name="bedroom" />
+              </div>
+              <div class="form-group col-4  mt-auto">
+                <label for="status">Etat du bien</label>
+                <select class="form-control" name="status">
+                  <option value="1">Neuf</option>
+                  <option value="0">Ancien</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-4 offset-2">
+                <label for="garden">Jardin</label>
+                <select class="form-control" name="garden">
+                  <option value="1">oui</option>
+                  <option value="0">non</option>
+                </select>
+              </div>
+              <div class="form-group col-4">
+                <label for="terrace">Terrasse</label>
+                <select class="form-control" name="terrace">
+                  <option value="1">oui</option>
+                  <option value="0">non</option>
+                </select>
+              </div>
+            </div>
 
             <div class="form-row d-flex flex-column">
               <label class="form-check-label"> Type de bien</label>
@@ -100,7 +136,7 @@ $none = "d-none";
                     class="form-check-input"
                     type="radio"
                     name="type"
-                    value="house"
+                    value="1"
                     id="house"
                   />
                   <label for="house">
@@ -117,7 +153,7 @@ $none = "d-none";
                     class="form-check-input"
                     type="radio"
                     name="type"
-                    value="apartment"
+                    value="0"
                     id="apartment"
                   />
                   <label for="apartment">
@@ -147,21 +183,18 @@ $none = "d-none";
             <div>
               <h3>Votre bien</h3>
               <ul>
-                  <li>Type : <?php echo $type?></li>
-                  <li>Adresse : <?php echo "$number $street, $postal $city" ?></li>
-                  <li>Nombre de chambre : <?php echo $bedroom ?></li>
-                </ul>
-              </div>
+                <li>Type :  <?php if($type){echo "Maison";}else{echo "Appartement";} ?></li>
+                <li>Adresse : <?php echo "$number $street, $postal $city" ?></li>
+                <li>Nombre de chambre : <?php echo $bedroom ?></li>
+              </ul>
+            </div>
               <ul class='mt-auto'>
-                <li>
-                  Surface : $surface </li>
-                <li></li>
-                <li></li>
+                <li>Surface habitable: <?php echo $surface?> m²</li>
+                <li>Etat du bien : <?php if($status){echo "neuf";}else{echo "ancien";} ?></li>
+                <li>Jardin : <?php if($garden){echo "oui";}else{echo "non";} ?></li>
               </ul>
               <ul class='mt-auto'>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li>Terrasse: <?php if($terrace){echo "oui";}else{echo "non";}?></li>
               </ul>
           </div>
         </div>
@@ -180,7 +213,7 @@ $none = "d-none";
     </section>
 
     <!-- Footer -->
-    <footer class="page-footer font-small bg-dark pt-4">
+    <footer class="page-footer font-small bg-light pt-4">
         <!-- Footer Links -->
         <div class="container-fluid text-center">
             <div class="row">
