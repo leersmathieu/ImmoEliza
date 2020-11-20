@@ -1,21 +1,32 @@
 <?php
-$appear="beforeSubmit";
+$section = 1;
+$appear = "beforeSubmit";
 $none = "d-none";
-  if(isset($_POST['submit'])){
-  $none = "";
-  $appear = "appear";
-  $disappear = "disappear";
-  $street= filter_var ( $_POST['street'], FILTER_SANITIZE_STRING);
-  $number = filter_var ( $_POST['number'], FILTER_SANITIZE_NUMBER_INT);
-  $postal = filter_var ( $_POST['postal'], FILTER_SANITIZE_NUMBER_INT);
-  $city = filter_var ( $_POST['city'], FILTER_SANITIZE_STRING);
-  $type = filter_var ( $_POST['type'], FILTER_SANITIZE_STRING);
-  $surface = filter_var ( $_POST['surface'], FILTER_SANITIZE_NUMBER_INT);
-  $bedroom = filter_var ( $_POST['bedroom'], FILTER_SANITIZE_NUMBER_INT);
-  $status = filter_var ( $_POST['status'], FILTER_SANITIZE_NUMBER_INT);
-  $garden = filter_var ( $_POST['garden'], FILTER_SANITIZE_NUMBER_INT);
-  $terrace = filter_var ( $_POST['terrace'], FILTER_SANITIZE_NUMBER_INT);
-  }
+$bgAnimation = "";
+if (isset($_POST['submit'])) {
+    $section = 2;
+    $bgAnimation = "bg_animation";
+    $none = "";
+    $appear = "appear";
+    $disappear = "disappear";
+    $street = filter_var($_POST['street'], FILTER_SANITIZE_STRING);
+    $number = filter_var($_POST['number'], FILTER_SANITIZE_NUMBER_INT);
+    $postal = filter_var($_POST['postal'], FILTER_SANITIZE_NUMBER_INT);
+    $city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
+    $type = filter_var($_POST['type'], FILTER_SANITIZE_STRING);
+    $surface = filter_var($_POST['surface'], FILTER_SANITIZE_NUMBER_INT);
+    $bedroom = filter_var($_POST['bedroom'], FILTER_SANITIZE_NUMBER_INT);
+    $status = filter_var($_POST['status'], FILTER_SANITIZE_NUMBER_INT);
+    $garden = filter_var($_POST['garden'], FILTER_SANITIZE_NUMBER_INT);
+    $terrace = filter_var($_POST['terrace'], FILTER_SANITIZE_NUMBER_INT);
+    $info = array('street' => $street, 'number' => $number, 'postal' => $postal, 'city' => $city, 'type' => $type,
+        'surface' => $surface, 'bedroom' => $bedroom, 'status' => $status, 'garden' => $garden, 'terrace' => $terrace,
+    );
+
+    require_once 'assets/php/API.php';
+    $prediction = new openPrediction('apiKey');
+    $predictionResult = $prediction->getPrediction($info);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,10 +47,10 @@ $none = "d-none";
     <script src="assets/js/script.js"></script>
 </head>
 
-<body>
+<body class="<?php echo $bgAnimation ?>">
   <header>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+    <nav class="navbar navbar-expand-lg navbar-light static-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="assets/images/immoEliza.png" alt="">
@@ -69,9 +80,10 @@ $none = "d-none";
     </nav>
   </header>
 
+  <?php if ($section == 1): ?>
     <section class="container-fluid <?php echo $disappear ?>" id="formSection">
       <div class="row">
-        <div class="col-12 col-md-8 offset-md-2 mainForm">
+        <div class="col-12 col-md-6 offset-md-3 my-5 mainForm">
           <form method="post">
             <h2>Formulaire</h2>
             <div class="form-row">
@@ -176,25 +188,28 @@ $none = "d-none";
       </div>
     </section>
 
-    <section class="container-fluid <?php echo "$none "; echo $appear; ?>" id="afterSubmit">
+  <?php else: ?>
+
+    <section class="container-fluid <?php echo "$none ";
+echo $appear; ?>" id="afterSubmit">
       <div class="row">
         <div class="col col-md-8 offset-md-2 info">
           <div class="d-flex justify-content-around">
             <div>
               <h3>Votre bien</h3>
               <ul>
-                <li>Type :  <?php if($type){echo "Maison";}else{echo "Appartement";} ?></li>
+                <li>Type :  <?php if ($type) {echo "Maison";} else {echo "Appartement";}?></li>
                 <li>Adresse : <?php echo "$number $street, $postal $city" ?></li>
                 <li>Nombre de chambre : <?php echo $bedroom ?></li>
               </ul>
             </div>
               <ul class='mt-auto'>
-                <li>Surface habitable: <?php echo $surface?> m²</li>
-                <li>Etat du bien : <?php if($status){echo "neuf";}else{echo "ancien";} ?></li>
-                <li>Jardin : <?php if($garden){echo "oui";}else{echo "non";} ?></li>
+                <li>Surface habitable: <?php echo $surface ?> m²</li>
+                <li>Etat du bien : <?php if ($status) {echo "neuf";} else {echo "ancien";}?></li>
+                <li>Jardin : <?php if ($garden) {echo "oui";} else {echo "non";}?></li>
               </ul>
               <ul class='mt-auto'>
-                <li>Terrasse: <?php if($terrace){echo "oui";}else{echo "non";}?></li>
+                <li>Terrasse: <?php if ($terrace) {echo "oui";} else {echo "non";}?></li>
               </ul>
           </div>
         </div>
@@ -212,8 +227,10 @@ $none = "d-none";
       </div>
     </section>
 
+    <?php endif?>
+
     <!-- Footer -->
-    <footer class="page-footer font-small bg-light pt-4">
+    <footer class="page-footer font-small pt-4">
         <!-- Footer Links -->
         <div class="container-fluid text-center">
             <div class="row">

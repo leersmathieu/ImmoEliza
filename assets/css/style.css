@@ -10804,9 +10804,12 @@ a.text-dark:hover, a.text-dark:focus {
 
 header {
   height: 75px;
-  z-index: 10;
   margin-bottom: 30px;
-  border-bottom: 1px solid rgba(1, 151, 246, 0.4);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+nav {
+  z-index: 50;
 }
 
 .navbar {
@@ -10825,9 +10828,8 @@ header {
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(-712px);
-            transform: translateY(-712px);
-    display: none;
+    -webkit-transform: translateY(-803px);
+            transform: translateY(-803px);
   }
 }
 
@@ -10839,40 +10841,62 @@ header {
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(-712px);
-            transform: translateY(-712px);
-    display: none;
+    -webkit-transform: translateY(-803px);
+            transform: translateY(-803px);
   }
 }
 
 @-webkit-keyframes appear {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(700px);
+            transform: translateY(700px);
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(-602px);
-            transform: translateY(-602px);
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
   }
 }
 
 @keyframes appear {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(700px);
+            transform: translateY(700px);
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(-602px);
-            transform: translateY(-602px);
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes bgAnimation {
+  100% {
+    background-position: 0px -350px;
+  }
+}
+
+@keyframes bgAnimation {
+  100% {
+    background-position: 0px -350px;
   }
 }
 
 body {
   color: #021844;
+  background: url("../images/background.jpg") no-repeat;
+  background-size: cover;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-perspective-origin: 50% 50%;
+          perspective-origin: 50% 50%;
+}
+
+.bg_animation {
+  -webkit-animation: bgAnimation 1.8s ease-in-out forwards;
+          animation: bgAnimation 1.8s ease-in-out forwards;
 }
 
 section {
@@ -10908,6 +10932,9 @@ section {
   border: solid 3px #021844;
   border-radius: 20px;
   padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-box-shadow: 10px 10px 12px 0px black;
+          box-shadow: 10px 10px 12px 0px black;
 }
 
 .submitButton {
@@ -10921,12 +10948,13 @@ section {
 }
 
 .disappear {
-  -webkit-animation: disappear 2s forwards;
-          animation: disappear 2s forwards;
+  -webkit-animation: disappear 2s ease-in-out forwards;
+          animation: disappear 2s ease-in-out forwards;
 }
 
 .info {
   border: solid 3px #021844;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   padding: 10px;
 }
@@ -10936,8 +10964,8 @@ section {
 }
 
 .appear {
-  -webkit-animation: appear 2s forwards;
-          animation: appear 2s forwards;
+  -webkit-animation: appear 2s ease-in-out forwards;
+          animation: appear 2s ease-in-out forwards;
 }
 
 .houseTemp {
@@ -10947,6 +10975,6 @@ section {
 
 footer {
   margin-top: 30px;
-  border-top: 1px solid rgba(1, 151, 246, 0.4);
+  background: rgba(255, 255, 255, 0.9);
 }
 /*# sourceMappingURL=style.css.map */
