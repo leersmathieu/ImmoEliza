@@ -4,6 +4,8 @@ This is a first at BeCode, two teams from different backgrounds (WebDev & AI) co
 
 The duration of this project is one week.
 
+Group 7 : Yannick (WebDev), Jonathan (WebDev), Mathieu (AI), Vincent (AI).
+
 ## Web development:
 
 Our goal is to design an internal application for a real estate agency so that it can deduct a price for a certain type of dwelling according to different criteria. We develop this application in HTML, CSS, PHP, with integration of an API.
@@ -11,8 +13,6 @@ Our goal is to design an internal application for a real estate agency so that i
 ## AI:
 
 Their goal is to design the API used for the application by developing a consistent set of data to return reliable values during the operation of the application.
-
-Group 7 : Yannick (WebDev), Jonathan (WebDev), Mathieu (AI), Vincent (AI).
 
 ## Step to realise (WebDev)
 
