@@ -238,8 +238,11 @@ if (isset($_POST['submit'])) {
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col col-md-8 offset-md-2 boxShadow p-0 d-flex align-items-end">
-            <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $street . '+' . $number . '+' . $postal . '+' . $city; ?>&output=embed"></iframe>
+        <div class="col col-md-4 offset-md-1 p-0 d-flex align-items-center">
+            <iframe class="boxShadow" width="100%" height="400" src="https://maps.google.com/maps?q=<?php echo $street . '+' . $number . '+' . $postal . '+' . $city; ?>&output=embed"></iframe>
+        </div>
+        <div class="col col-md-5 offset-md-1 boxShadow p-0">
+            <img class="houseTemp" src="assets/images/temp3d.jpg" width="100%" height="500" alt="">
         </div>
       </div>
     </section>
