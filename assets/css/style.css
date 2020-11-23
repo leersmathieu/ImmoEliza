@@ -10874,20 +10874,20 @@ nav {
 
 @-webkit-keyframes bgAnimation {
   100% {
-    background-position: 0px -200px;
+    background-position: center -650px;
   }
 }
 
 @keyframes bgAnimation {
   100% {
-    background-position: 0px -200px;
+    background-position: center -650px;
   }
 }
 
 body {
   color: #021844;
   background: url("../images/background.jpg") no-repeat top center;
-  background-size: cover;
+  /* background-size: cover; */
   -webkit-perspective: 1000px;
           perspective: 1000px;
   -webkit-perspective-origin: 50% 50%;
