@@ -1,9 +1,7 @@
 <?php
-$section = 1;
 $appear = "beforeSubmit";
 $bgAnimation = "";
 if (isset($_POST['submit'])) {
-    $section = 2;
     $bgAnimation = "bg_animation";
     $appear = "appear";
     $disappear = "disappear";
@@ -65,10 +63,9 @@ if (isset($_POST['submit'])) {
     </nav>
   </header>
 
-  <?php if ($section == 1): ?>
     <section class="container-fluid <?php echo $disappear ?>" id="formSection">
       <div class="row">
-        <div class="col-12 col-md-6 offset-md-3 my-5 mainForm">
+        <div class="col-12 col-md-6 offset-md-3 mainForm">
           <form method="post">
             <h2>Formulaire</h2>
             <div class="form-row">
@@ -183,8 +180,6 @@ if (isset($_POST['submit'])) {
       </div>
     </section>
 
-  <?php else: ?>
-
     <section class="container-fluid <?php echo $appear; ?>" id="afterSubmit">
       <div class="row">
         <div class="col col-md-8 offset-md-2 info">
@@ -218,8 +213,6 @@ if (isset($_POST['submit'])) {
       </div>
     </section>
 
-    <?php endif?>
-
     <!-- Footer -->
     <footer id="contact" class="page-footer font-small pt-4">
         <!-- Footer Links -->
@@ -236,16 +229,16 @@ if (isset($_POST['submit'])) {
                     <h5 class="text-uppercase">Contact</h5>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="https://github.com/leersmathieu">Mathieu</a>
+                            <a href="https://github.com/leersmathieu">Mathieu (AI)</a>
                         </li>
                         <li>
-                            <a href="https://github.com/paradous/">Vincent</a>
+                            <a href="https://github.com/paradous/">Vincent (AI)</a>
                         </li>
                         <li>
-                            <a href="https://github.com/Yaco-99/">Yannick</a>
+                            <a href="https://github.com/Yaco-99/">Yannick (Web dev)</a>
                         </li>
                         <li>
-                            <a href="https://github.com/deschuyteneerj/">Jonathan</a>
+                            <a href="https://github.com/deschuyteneerj/">Jonathan (Web dev)</a>
                         </li>
                     </ul>
                 </div>

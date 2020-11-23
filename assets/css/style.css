@@ -10802,14 +10802,12 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
-header {
+nav {
+  z-index: 50;
   height: 75px;
   margin-bottom: 30px;
   background: rgba(255, 255, 255, 0.9);
-}
-
-nav {
-  z-index: 50;
+  margin-bottom: 5rem;
 }
 
 .navbar {
@@ -10828,6 +10826,7 @@ nav {
   }
   100% {
     opacity: 0;
+    height: 0px;
     -webkit-transform: translateY(-803px);
             transform: translateY(-803px);
   }
@@ -10841,6 +10840,7 @@ nav {
   }
   100% {
     opacity: 0;
+    height: 0px;
     -webkit-transform: translateY(-803px);
             transform: translateY(-803px);
   }
@@ -10848,12 +10848,10 @@ nav {
 
 @-webkit-keyframes appear {
   0% {
-    opacity: 0;
-    -webkit-transform: translateY(700px);
-            transform: translateY(700px);
+    -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
   }
   100% {
-    opacity: 1;
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
   }
@@ -10861,12 +10859,10 @@ nav {
 
 @keyframes appear {
   0% {
-    opacity: 0;
-    -webkit-transform: translateY(700px);
-            transform: translateY(700px);
+    -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
   }
   100% {
-    opacity: 1;
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
   }
@@ -10960,7 +10956,7 @@ section {
 }
 
 .beforeSubmit {
-  opacity: 0;
+  display: none;
 }
 
 .appear {
@@ -10974,7 +10970,7 @@ section {
 }
 
 footer {
-  margin-top: 30px;
+  margin-top: 5rem;
   background: rgba(255, 255, 255, 0.9);
 }
 

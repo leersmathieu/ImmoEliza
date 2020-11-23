@@ -9,16 +9,15 @@
   }
   100% {
     opacity: 0;
+    height: 0px;
     transform: translateY(-803px);
   }
 }
 @keyframes appear {
   0% {
-    opacity: 0;
-    transform: translateY(700px);
+    transform: translateY(1000px);
   }
   100% {
-    opacity: 1;
     transform: translateY(0px);
   }
 }
@@ -94,7 +93,7 @@ section {
 }
 
 .beforeSubmit {
-  opacity: 0;
+  display: none;
 }
 .appear {
   animation: appear 2s ease-in-out forwards;
@@ -105,7 +104,7 @@ section {
 }
 
 footer {
-  margin-top: 30px;
+  margin-top: 5rem;
   background: rgba(255, 255, 255, 0.9);
 }
 ul {
