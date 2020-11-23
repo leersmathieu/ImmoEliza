@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
     <nav class="navbar navbar-expand-lg navbar-light static-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="assets/images/immoEliza.png" alt="">
+                <img src="assets/images/immoEliza1.png" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,17 +54,10 @@ if (isset($_POST['submit'])) {
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Accueil
-                        </a>
+                        <a class="nav-link" href="index.php">Formulaire</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Formulaire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">A propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -231,14 +224,14 @@ if (isset($_POST['submit'])) {
     <?php endif?>
 
     <!-- Footer -->
-    <footer class="page-footer font-small pt-4">
+    <footer id="contact" class="page-footer font-small pt-4">
         <!-- Footer Links -->
         <div class="container-fluid text-center">
             <div class="row">
                 <div class="col-lg-6 mt-md-0 mt-3">
                     <!-- Content -->
-                    <h5 class="text-uppercase">Footer Content</h5>
-                    <p>Here you can use rows and columns to organize your footer content.</p>
+                    <h5 class="text-uppercase">Utilité de l'application</h5>
+                    <p>L'application permettra de faire une prédiction de prix pour une habitation selon plusieurs critères définis.</p>
                 </div>
                 <hr class="w-100 d-lg-none">
                 <div class="col-lg-6 mb-md-0">
@@ -246,16 +239,16 @@ if (isset($_POST['submit'])) {
                     <h5 class="text-uppercase">Contact</h5>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#!">Link 1</a>
+                            <a href="https://github.com/leersmathieu">https://github.com/leersmathieu/</a>
                         </li>
                         <li>
-                            <a href="#!">Link 2</a>
+                            <a href="https://github.com/paradous">https://github.com/paradous</a>
                         </li>
                         <li>
-                            <a href="#!">Link 3</a>
+                            <a href="https://github.com/Yaco-99/">https://github.com/Yaco-99/</a>
                         </li>
                         <li>
-                            <a href="#!">Link 4</a>
+                            <a href="https://github.com/deschuyteneerj/">https://github.com/deschuyteneerj/</a>
                         </li>
                     </ul>
                 </div>
