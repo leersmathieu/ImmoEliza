@@ -6,34 +6,34 @@ if (isset($_POST['submit'])) {
     $appear = "appear";
     $disappear = "disappear";
     $args = array(
-        'street' => array('filter' => FILTER_SANITIZE_STRING,
+        'street' => array('sanitize' => FILTER_SANITIZE_STRING,
             'validate' => FILTER_VALIDATE_REGEXP),
 
-        'type' => array('filter' => FILTER_SANITIZE_INT,
+        'type' => array('sanitize' => FILTER_SANITIZE_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
-        'city' => array('filter' => FILTER_SANITIZE_STRING,
+        'city' => array('sanitize' => FILTER_SANITIZE_STRING,
             'validate' => FILTER_VALIDATE_REGEXP),
 
-        'number' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+        'number' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_INT),
 
-        'terrace' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+        'terrace' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
-        'garden' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+        'garden' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
-        'status' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+        'status' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
-        'bedroom' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+        'bedroom' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_INT),
 
-        'surface' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+        'surface' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_INT),
 
-        'postal' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+        'postal' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_INT),
     );
     $info = filter_input_array(INPUT_POST, $args);
@@ -101,33 +101,33 @@ if (isset($_POST['submit'])) {
             <div class="form-row">
               <div class="form-group col-9">
                 <label for="street">Rue</label>
-                <input type="text" class="form-control" name="street" />
+                <input required type="text" class="form-control" name="street" />
               </div>
               <div class="form-group col-3">
                 <label for="number">Numéro</label>
-                <input type="number" class="form-control" name="number" />
+                <input required type="number" class="form-control" name="number" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-3">
                 <label for="postal">Code postal</label>
-                <input type="number" class="form-control" name="postal" />
+                <input required type="number" class="form-control" name="postal" />
               </div>
               <div class="form-group col-9 mt-auto">
                 <label for="city">Ville</label>
-                <input type="text" class="form-control" name="city" />
+                <input required type="text" class="form-control" name="city" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-8 mt-auto">
                 <label for="surface">Surface habitable</label>
                 <div class="d-flex align-items-center">
-                  <input type="range" min="10" max="300" class="form-control" id="valueInput" name="surface" />
+                  <input required type="range" min="10" max="300" class="form-control" id="valueInput" name="surface" />
                   <p id="valueTarget" class="m-0">155m²</p>
                 </div>
 
               </div>
-              <div class="form-group col-4  mt-auto">
+              <div class="form-group col-4 mt-auto">
                 <label for="bedroom">Nombre de chambre(s)</label>
                 <select class="form-control" name="bedroom">
                   <option value="1">1</option>
@@ -201,6 +201,7 @@ if (isset($_POST['submit'])) {
                 </div>
               </div>
             </div>
+            <input class="d-none" type="text" id="fake" name="fake" value="">
             <button type="submit" class="submitButton" name="submit" id="submitButton">
               Submit
             </button>

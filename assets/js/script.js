@@ -4,4 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   valueInput.addEventListener("input", () => {
     target.innerHTML = `${valueInput.value}m²`;
   });
+
+  $("form").submit(function () {
+    if ($("input#fake").val().length != 0) {
+      return false;
+    }
+  });
 });
