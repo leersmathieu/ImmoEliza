@@ -242,7 +242,7 @@ if (isset($_POST['submit'])) {
                             <a href="https://github.com/leersmathieu">https://github.com/leersmathieu/</a>
                         </li>
                         <li>
-                            <a href="https://github.com/paradous">https://github.com/paradous</a>
+                            <a href="https://github.com/paradous/">https://github.com/paradous/</a>
                         </li>
                         <li>
                             <a href="https://github.com/Yaco-99/">https://github.com/Yaco-99/</a>
