@@ -5,19 +5,49 @@ if (isset($_POST['submit'])) {
     $bgAnimation = "bg_animation";
     $appear = "appear";
     $disappear = "disappear";
-    $street = filter_var($_POST['street'], FILTER_SANITIZE_STRING);
-    $number = filter_var($_POST['number'], FILTER_SANITIZE_NUMBER_INT);
-    $postal = filter_var($_POST['postal'], FILTER_SANITIZE_NUMBER_INT);
-    $city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
-    $type = filter_var($_POST['type'], FILTER_SANITIZE_STRING);
-    $surface = filter_var($_POST['surface'], FILTER_SANITIZE_NUMBER_INT);
-    $bedroom = filter_var($_POST['bedroom'], FILTER_SANITIZE_NUMBER_INT);
-    $status = filter_var($_POST['status'], FILTER_SANITIZE_NUMBER_INT);
-    $garden = filter_var($_POST['garden'], FILTER_SANITIZE_NUMBER_INT);
-    $terrace = filter_var($_POST['terrace'], FILTER_SANITIZE_NUMBER_INT);
-    $info = array('street' => $street, 'number' => $number, 'postal' => $postal, 'city' => $city, 'type' => $type,
-        'surface' => $surface, 'bedroom' => $bedroom, 'status' => $status, 'garden' => $garden, 'terrace' => $terrace,
+    $args = array(
+        'street' => array('filter' => FILTER_SANITIZE_STRING,
+            'validate' => FILTER_VALIDATE_REGEXP),
+
+        'type' => array('filter' => FILTER_SANITIZE_INT,
+            'validate' => FILTER_VALIDATE_BOOLEAN),
+
+        'city' => array('filter' => FILTER_SANITIZE_STRING,
+            'validate' => FILTER_VALIDATE_REGEXP),
+
+        'number' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_INT),
+
+        'terrace' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_BOOLEAN),
+
+        'garden' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_BOOLEAN),
+
+        'status' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_BOOLEAN),
+
+        'bedroom' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_INT),
+
+        'surface' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_INT),
+
+        'postal' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_INT),
     );
+    $info = filter_input_array(INPUT_POST, $args);
+
+    $street = $info['street'];
+    $number = $info['number'];
+    $postal = $info['postal'];
+    $city = $info['city'];
+    $type = $info['type'];
+    $surface = $info['surface'];
+    $bedroom = $info['bedroom'];
+    $status = $info['status'];
+    $garden = $info['garden'];
+    $terrace = $info['terrace'];
 
     require_once 'assets/php/API.php';
     $prediction = new openPrediction('apiKey');
@@ -65,7 +95,7 @@ if (isset($_POST['submit'])) {
 
     <section class="container-fluid <?php echo $disappear ?>" id="formSection">
       <div class="row">
-        <div class="col-12 col-md-6 offset-md-3 mainForm">
+        <div class="col-12 col-md-6 offset-md-3 mainForm boxShadow">
           <form method="post">
             <h2>Formulaire</h2>
             <div class="form-row">
@@ -182,7 +212,7 @@ if (isset($_POST['submit'])) {
 
     <section class="container-fluid <?php echo $appear; ?>" id="afterSubmit">
       <div class="row">
-        <div class="col col-md-8 offset-md-2 info">
+        <div class="col col-md-8 offset-md-2 info boxShadow">
           <div class="d-flex justify-content-around">
             <div>
               <h3>Votre bien</h3>
@@ -207,7 +237,7 @@ if (isset($_POST['submit'])) {
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col col-md-8 offset-md-2">
+        <div class="col col-md-8 offset-md-2 boxShadow p-0 d-flex align-items-end">
             <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $street . '+' . $number . '+' . $postal . '+' . $city; ?>&output=embed"></iframe>
         </div>
       </div>

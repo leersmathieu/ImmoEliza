@@ -10883,7 +10883,6 @@ nav {
 body {
   color: #021844;
   background: url("../images/background.jpg") no-repeat top center;
-  /* background-size: cover; */
   -webkit-perspective: 1000px;
           perspective: 1000px;
   -webkit-perspective-origin: 50% 50%;
@@ -10929,6 +10928,9 @@ section {
   border-radius: 20px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.9);
+}
+
+.boxShadow {
   -webkit-box-shadow: 10px 10px 12px 0px black;
           box-shadow: 10px 10px 12px 0px black;
 }
@@ -10976,5 +10978,9 @@ footer {
 
 ul {
   list-style-position: inside;
+}
+
+iframe {
+  border-radius: 20px;
 }
 /*# sourceMappingURL=style.css.map */

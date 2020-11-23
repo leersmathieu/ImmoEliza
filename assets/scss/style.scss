@@ -30,7 +30,6 @@
 body {
   color: rgb(2, 24, 68);
   background: url("../images/background.jpg") no-repeat top center;
-  /* background-size: cover; */
   perspective: 1000px;
   perspective-origin: 50% 50%;
 }
@@ -68,6 +67,9 @@ section {
   border-radius: 20px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.9);
+}
+
+.boxShadow {
   box-shadow: 10px 10px 12px 0px rgb(0, 0, 0);
 }
 
@@ -109,4 +111,8 @@ footer {
 }
 ul {
   list-style-position: inside;
+}
+
+iframe {
+  border-radius: 20px;
 }
