@@ -1,12 +1,10 @@
 <?php
 $section = 1;
 $appear = "beforeSubmit";
-$none = "d-none";
 $bgAnimation = "";
 if (isset($_POST['submit'])) {
     $section = 2;
     $bgAnimation = "bg_animation";
-    $none = "";
     $appear = "appear";
     $disappear = "disappear";
     $street = filter_var($_POST['street'], FILTER_SANITIZE_STRING);
@@ -36,12 +34,6 @@ if (isset($_POST['submit'])) {
     <meta name="description" content="Immo Eliza">
     <meta name="keywords" content="HTML, CSS, PHP, Python">
     <meta name="author" content="Mathieu, Vincent, Yannick, Jonathan">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Immo ELiza</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/script.js"></script>
@@ -107,24 +99,34 @@ if (isset($_POST['submit'])) {
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-4  mt-auto">
+              <div class="form-group col-8 mt-auto">
                 <label for="surface">Surface habitable</label>
-                <input type="number" class="form-control" name="surface" />
+                <div class="d-flex align-items-center">
+                  <input type="range" min="10" max="300" class="form-control" id="valueInput" name="surface" />
+                  <p id="valueTarget" class="m-0">155m²</p>
+                </div>
+
               </div>
               <div class="form-group col-4  mt-auto">
                 <label for="bedroom">Nombre de chambre(s)</label>
-                <input type="number" class="form-control" name="bedroom" />
+                <select class="form-control" name="bedroom">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
               </div>
-              <div class="form-group col-4  mt-auto">
+            </div>
+            <div class="form-row">
+            <div class="form-group col-4 mt-auto">
                 <label for="status">Etat du bien</label>
                 <select class="form-control" name="status">
                   <option value="1">Neuf</option>
                   <option value="0">Ancien</option>
                 </select>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-4 offset-2">
+              <div class="form-group col-4">
                 <label for="garden">Jardin</label>
                 <select class="form-control" name="garden">
                   <option value="1">oui</option>
@@ -190,8 +192,7 @@ if (isset($_POST['submit'])) {
 
   <?php else: ?>
 
-    <section class="container-fluid <?php echo "$none ";
-echo $appear; ?>" id="afterSubmit">
+    <section class="container-fluid <?php echo $appear; ?>" id="afterSubmit">
       <div class="row">
         <div class="col col-md-8 offset-md-2 info">
           <div class="d-flex justify-content-around">

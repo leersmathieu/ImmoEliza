@@ -24,13 +24,13 @@
 }
 @keyframes bgAnimation {
   100% {
-    background-position: 0px -350px;
+    background-position: 0px -200px;
   }
 }
 
 body {
   color: rgb(2, 24, 68);
-  background: url("../images/background.jpg") no-repeat;
+  background: url("../images/background.jpg") no-repeat top center;
   background-size: cover;
   perspective: 1000px;
   perspective-origin: 50% 50%;
