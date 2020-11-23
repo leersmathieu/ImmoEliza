@@ -191,30 +191,27 @@ if (isset($_POST['submit'])) {
           <div class="d-flex justify-content-around">
             <div>
               <h3>Votre bien</h3>
-              <ul>
+              <ul class="list-unstyled">
                 <li>Type :  <?php if ($type) {echo "Maison";} else {echo "Appartement";}?></li>
                 <li>Adresse : <?php echo "$number $street, $postal $city" ?></li>
                 <li>Nombre de chambre : <?php echo $bedroom ?></li>
               </ul>
             </div>
-              <ul class='mt-auto'>
+              <ul class='list-unstyled mt-auto'>
                 <li>Surface habitable: <?php echo $surface ?> m²</li>
                 <li>Etat du bien : <?php if ($status) {echo "neuf";} else {echo "ancien";}?></li>
                 <li>Jardin : <?php if ($garden) {echo "oui";} else {echo "non";}?></li>
               </ul>
-              <ul class='mt-auto'>
+              <ul class='list-unstyled mt-auto'>
                 <li>Terrasse: <?php if ($terrace) {echo "oui";} else {echo "non";}?></li>
               </ul>
           </div>
+          <p class="mb-0">
+              Prix estimé : <?php echo $predictionResult ?>
+              </p>
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col-4 offset-2">
-          <p class="mb-0">
-            Prix estimé :
-            <?php ?>
-          </p>
-        </div>
         <div class="col col-md-8 offset-md-2">
             <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $street . '+' . $number . '+' . $postal . '+' . $city; ?>&output=embed"></iframe>
         </div>
@@ -239,16 +236,16 @@ if (isset($_POST['submit'])) {
                     <h5 class="text-uppercase">Contact</h5>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="https://github.com/leersmathieu">https://github.com/leersmathieu/</a>
+                            <a href="https://github.com/leersmathieu">Mathieu</a>
                         </li>
                         <li>
-                            <a href="https://github.com/paradous/">https://github.com/paradous/</a>
+                            <a href="https://github.com/paradous/">Vincent</a>
                         </li>
                         <li>
-                            <a href="https://github.com/Yaco-99/">https://github.com/Yaco-99/</a>
+                            <a href="https://github.com/Yaco-99/">Yannick</a>
                         </li>
                         <li>
-                            <a href="https://github.com/deschuyteneerj/">https://github.com/deschuyteneerj/</a>
+                            <a href="https://github.com/deschuyteneerj/">Jonathan</a>
                         </li>
                     </ul>
                 </div>
