@@ -68,7 +68,9 @@ if (isset($_POST['submit'])) {
     <meta name="author" content="Mathieu, Vincent, Yannick, Jonathan">
     <title>Immo ELiza</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/node_modules/jszip/dist/jszip.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/3Dscript.js"></script>
 </head>
 
 <body class="<?php echo $bgAnimation ?>">
