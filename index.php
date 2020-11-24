@@ -52,6 +52,10 @@ if (isset($_POST['submit'])) {
     require_once 'assets/php/API.php';
     $prediction = new openPrediction('apiKey');
     $predictionResult = $prediction->getPrediction($info);
+
+    require_once 'assets/php/3Dapi.php';
+    $test = new open3D('apiKey');
+    $testResult = $test->get3D($info);
 }
 ?>
 <!DOCTYPE html>
