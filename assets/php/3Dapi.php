@@ -32,7 +32,6 @@ class open3D
         } else {
             $id = $result[$value['number']];
         };
-        echo "<script>console.log('" . var_dump($id) . " ' )</script>";
         $folder = getFolder($id);
 
         return "test";
@@ -59,7 +58,7 @@ function getFolder($id)
 {
     $url = "https://api.wallonia.ml/v1/model/$id";
     $path = __DIR__ . '/download/3dObject.zip';
-
+    echo "<script>console.log('" . var_dump($path) . " ' )</script>";
     $fp = fopen($path, 'w');
 
     $ch = curl_init($url);
@@ -69,4 +68,13 @@ function getFolder($id)
 
     curl_close($ch);
     fclose($fp);
+
+    $zip = new ZipArchive;
+    if ($zip->open(__DIR__ . '/download/3dObject.zip') === true) {
+        $zip->extractTo(__DIR__ . '/threeJs');
+        $zip->close();
+        echo 'ok';
+    } else {
+        echo 'échec';
+    }
 }

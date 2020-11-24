@@ -24,10 +24,13 @@ if (isset($_POST['submit'])) {
         'garden' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
+        'kitchen' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_BOOLEAN),
+
         'status' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
-        'bedroom' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
+        'room' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_INT),
 
         'surface' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
@@ -44,10 +47,11 @@ if (isset($_POST['submit'])) {
     $city = $info['city'];
     $type = $info['type'];
     $surface = $info['surface'];
-    $bedroom = $info['bedroom'];
+    $room = $info['room'];
     $status = $info['status'];
     $garden = $info['garden'];
     $terrace = $info['terrace'];
+    $kitchen = $info['kitchen'];
 
     require_once 'assets/php/API.php';
     $prediction = new openPrediction('apiKey');
@@ -56,6 +60,8 @@ if (isset($_POST['submit'])) {
     require_once 'assets/php/3Dapi.php';
     $test = new open3D('apiKey');
     $testResult = $test->get3D($info);
+
+    echo '<script src="assets/js/3Dscript.js"></script>';
 }
 ?>
 <!DOCTYPE html>
@@ -68,9 +74,7 @@ if (isset($_POST['submit'])) {
     <meta name="author" content="Mathieu, Vincent, Yannick, Jonathan">
     <title>Immo ELiza</title>
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script src="assets/node_modules/jszip/dist/jszip.min.js"></script>
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/3Dscript.js"></script>
 </head>
 
 <body class="<?php echo $bgAnimation ?>">
@@ -134,8 +138,8 @@ if (isset($_POST['submit'])) {
 
               </div>
               <div class="form-group col-4 mt-auto">
-                <label for="bedroom">Nombre de chambre(s)</label>
-                <select class="form-control" name="bedroom">
+                <label for="room">Nombre de pièce(s)</label>
+                <select class="form-control" name="room">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -145,25 +149,32 @@ if (isset($_POST['submit'])) {
               </div>
             </div>
             <div class="form-row">
-            <div class="form-group col-4 mt-auto">
+            <div class="form-group col-3 mt-auto">
                 <label for="status">Etat du bien</label>
                 <select class="form-control" name="status">
                   <option value="1">Neuf</option>
                   <option value="0">Ancien</option>
                 </select>
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-3">
                 <label for="garden">Jardin</label>
                 <select class="form-control" name="garden">
-                  <option value="1">oui</option>
-                  <option value="0">non</option>
+                  <option value="1">Oui</option>
+                  <option value="0">Non</option>
                 </select>
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-3">
                 <label for="terrace">Terrasse</label>
                 <select class="form-control" name="terrace">
-                  <option value="1">oui</option>
-                  <option value="0">non</option>
+                  <option value="1">Oui</option>
+                  <option value="0">Non</option>
+                </select>
+              </div>
+              <div class="form-group col-3">
+                <label for="kitchen">Cuisine équipée</label>
+                <select class="form-control" name="kitchen">
+                  <option value="1">Oui</option>
+                  <option value="0">Non</option>
                 </select>
               </div>
             </div>
@@ -226,7 +237,7 @@ if (isset($_POST['submit'])) {
               <ul class="list-unstyled">
                 <li>Type :  <?php if ($type) {echo "Maison";} else {echo "Appartement";}?></li>
                 <li>Adresse : <?php echo "$number $street, $postal $city" ?></li>
-                <li>Nombre de chambre : <?php echo $bedroom ?></li>
+                <li>Nombre de pièce(s) : <?php echo $room ?></li>
               </ul>
             </div>
               <ul class='list-unstyled mt-auto'>
