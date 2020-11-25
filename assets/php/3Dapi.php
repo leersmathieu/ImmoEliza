@@ -58,7 +58,6 @@ function getFolder($id)
 {
     $url = "https://api.wallonia.ml/v1/model/$id";
     $path = __DIR__ . '/download/3dObject.zip';
-    echo "<script>console.log('" . var_dump($path) . " ' )</script>";
     $fp = fopen($path, 'w');
 
     $ch = curl_init($url);
@@ -73,7 +72,6 @@ function getFolder($id)
     if ($zip->open(__DIR__ . '/download/3dObject.zip') === true) {
         $zip->extractTo(__DIR__ . '/threeJs');
         $zip->close();
-        echo 'ok';
     } else {
         echo 'échec';
     }

@@ -1,0 +1,28 @@
+{
+  "name": "htdocs",
+  "version": "1.0.0",
+  "description": "This is a first at BeCode, two teams from different backgrounds (WebDev & AI) come together to realize a project that is ambitious to say the least.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leersmathieu/ImmoEliza.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leersmathieu/ImmoEliza/issues"
+  },
+  "homepage": "https://github.com/leersmathieu/ImmoEliza#readme",
+  "devDependencies": {
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "three": "^0.122.0",
+    "three-ply-loader": "^1.0.0"
+  }
+}
