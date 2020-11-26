@@ -47,9 +47,9 @@ if (isset($_POST['submit'])) {
     $info['type_of_property'] = intval($info['type_of_property']);
     $info['house_area'] = intval($info['house_area']);
     $info['number_of_bedroom'] = intval($info['number_of_bedroom']);
-    $info['is_new'] = boolval($info['is_new']);
-    $info['garden'] = boolval($info['garden']);
-    $info['terrace'] = boolval($info['terrace']);
+    $info['is_new'] = intval($info['is_new']);
+    $info['garden'] = intval($info['garden']);
+    $info['terrace'] = intval($info['terrace']);
     $kitchen = intval($info['kitchen']);
 
     require_once '../assets/php/API.php';
@@ -187,6 +187,7 @@ if (isset($_POST['submit'])) {
                     name="type"
                     value="0"
                     id="house"
+                    required
                   />
                   <label for="house">
                     <img
@@ -204,6 +205,7 @@ if (isset($_POST['submit'])) {
                     name="type"
                     value="1"
                     id="apartment"
+                    required
                   />
                   <label for="apartment">
                     <img
