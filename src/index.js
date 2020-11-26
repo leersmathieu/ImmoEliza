@@ -5,6 +5,7 @@ import { PLYLoader } from "../node_modules/three/examples/jsm/loaders/PLYLoader"
 document.addEventListener("DOMContentLoaded", async () => {
   const valueInput = document.getElementById("valueInput");
   const target = document.getElementById("valueTarget");
+  const displayTarget = document.getElementById("3dTarget");
   valueInput.addEventListener("input", () => {
     target.innerHTML = `${valueInput.value}m²`;
   });
@@ -17,41 +18,75 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let data;
   await ajaxRequest();
-
-  console.log();
+  let averageOffset = [0, 0];
+  for (let i = 0; i < data.offsets.house.length; i++) {
+    averageOffset[0] += data.offsets.house[i].x / data.offsets.house.length;
+    averageOffset[1] += data.offsets.house[i].y / data.offsets.house.length;
+  }
 
   const scene = new THREE.Scene();
 
   var light = new THREE.SpotLight();
-  light.position.set(20, 20, 20);
+  light.position.set(-20, -20, 50);
   scene.add(light);
 
   const camera = new THREE.PerspectiveCamera(
-    75,
+    30,
     window.innerWidth / window.innerHeight,
-    1,
-    1000
+    0.1,
+    10000
   );
 
-  camera.position.z = 40;
+  camera.position.set(0, -40, 20);
+  camera.lookAt(0, 0, 0);
 
   const renderer = new THREE.WebGLRenderer();
   renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  renderer.setSize(displayTarget.clientWidth, displayTarget.clientHeight);
+  displayTarget.appendChild(renderer.domElement);
 
   const controls = new OrbitControls(camera, renderer.domElement);
 
+  const material = new THREE.MeshPhongMaterial({
+    color: 0x021844,
+    specular: 0x7d4031,
+    shininess: 10,
+    flatShading: true,
+    side: THREE.DoubleSide,
+  });
+
   const loader = new PLYLoader();
+  loader.load(
+    `../assets/threeJs/land._ply`,
+    function (geometry) {
+      geometry.computeVertexNormals();
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.geometry.translate(
+        -data.offsets.land.x,
+        -data.offsets.land.y,
+        -data.offsets.land.z
+      );
+      scene.add(mesh);
+    },
+    (xhr) => {
+      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
   for (let i = 0; i < data.offsets.house.length; i++) {
     loader.load(
       `../assets/threeJs/${i}.ply`,
       function (geometry) {
+        //+ mat double side
         geometry.computeVertexNormals();
-        const mesh = new THREE.Mesh(geometry);
-        mesh.position.x = data.offsets.house[i].x;
-        mesh.position.y = data.offsets.house[i].y;
-        mesh.position.z = data.offsets.house[i].z;
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.geometry.translate(
+          data.offsets.house[i].x - averageOffset[0],
+          data.offsets.house[i].y - averageOffset[1],
+          -data.offsets.house[i].z
+        );
         scene.add(mesh);
       },
       (xhr) => {
@@ -62,30 +97,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     );
   }
-  /* "offsets": {
-    "land": { "x": 34.5, "y": 39.0, "z": 100.35485076904297 },
-    "house": [
-      { "x": -13.5, "y": 5.0, "z": 100.35485076904297 },
-      { "x": -13.5, "y": 5.0, "z": 100.35485076904297 },
-      { "x": -3.5, "y": 9.0, "z": 100.35485076904297 },
-      { "x": -6.5, "y": 5.0, "z": 100.35485076904297 },
-      { "x": -6.5, "y": 5.0, "z": 100.35485076904297 },
-      { "x": -8.5, "y": 9.0, "z": 100.35485076904297 },
-      { "x": -13.5, "y": 9.0, "z": 100.35485076904297 },
-      { "x": -13.5, "y": 10.0, "z": 100.35485076904297 },
-      { "x": -8.5, "y": 15.0, "z": 100.35485076904297 },
-      { "x": -9.5, "y": 15.0, "z": 100.35485076904297 },
-      { "x": -0.5, "y": 14.0, "z": 100.35485076904297 },
-      { "x": -1.5, "y": 9.0, "z": 100.35485076904297 },
-      { "x": -1.5, "y": 9.0, "z": 100.35485076904297 }
-    ]
-  }, */
 
   window.addEventListener("resize", onWindowResize, false);
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(displayTarget.clientWidth, displayTarget.clientHeight);
     render();
   }
 

@@ -257,8 +257,8 @@ if (isset($_POST['submit'])) {
         <div class="col col-md-4 offset-md-1 p-0 d-flex align-items-center">
             <iframe class="boxShadow" width="100%" height="400" src="https://maps.google.com/maps?q=<?php echo $street . '+' . $number . '+' . $postal . '+' . $city; ?>&output=embed"></iframe>
         </div>
-        <div class="col col-md-5 offset-md-1 boxShadow p-0">
-            <img class="houseTemp" src="../assets/images/temp3d.jpg" width="100%" height="500" alt="">
+        <div id="3dTarget" class="col col-md-5 offset-md-1 boxShadow p-0">
+
         </div>
       </div>
     </section>
