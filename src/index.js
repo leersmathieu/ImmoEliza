@@ -3,19 +3,8 @@ import { OrbitControls } from "../node_modules/three/examples/jsm/controls/Orbit
 import { PLYLoader } from "../node_modules/three/examples/jsm/loaders/PLYLoader";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const valueInput = document.getElementById("valueInput");
-  const target = document.getElementById("valueTarget");
+  console.log("insideIndex");
   const displayTarget = document.getElementById("3dTarget");
-  valueInput.addEventListener("input", () => {
-    target.innerHTML = `${valueInput.value}m²`;
-  });
-
-  $("form").submit(function () {
-    if ($("input#fake").val().length != 0) {
-      return false;
-    }
-  });
-
   let data;
   await ajaxRequest();
   let averageOffset = [0, 0];
@@ -57,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const loader = new PLYLoader();
   loader.load(
-    `../assets/threeJs/land._ply`,
+    `../assets/php/threeJs/land._ply`,
     function (geometry) {
       geometry.computeVertexNormals();
       const mesh = new THREE.Mesh(geometry, material);
@@ -77,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
   for (let i = 0; i < data.offsets.house.length; i++) {
     loader.load(
-      `../assets/threeJs/${i}.ply`,
+      `../assets/php/threeJs/${i}.ply`,
       function (geometry) {
         //+ mat double side
         geometry.computeVertexNormals();
