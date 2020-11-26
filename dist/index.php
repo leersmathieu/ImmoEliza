@@ -61,8 +61,6 @@ if (isset($_POST['submit'])) {
     require_once '../assets/php/3Dapi.php';
     $test = new open3D('apiKey');
     $testResult = $test->get3D($info);
-
-    echo "<script src='main.js'></script>";
 }
 ?>
 <!DOCTYPE html>
@@ -76,6 +74,7 @@ if (isset($_POST['submit'])) {
     <title>Immo ELiza</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script src="../assets/js/inputRange.js"></script>
+    <?php echo "<script src='main.js'></script>"; ?>
 
 </head>
 

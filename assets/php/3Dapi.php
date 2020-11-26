@@ -26,6 +26,7 @@ class open3D
         };
 
         $result = apiRequest($postal . "/" . $street);
+
         if (!array_key_exists($value['number'], $result)) {
             $randomKey = array_rand($result, 1);
             $id = $result[$randomKey];

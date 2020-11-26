@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         -data.offsets.land.y,
         -data.offsets.land.z
       );
+      console.log(data);
       scene.add(mesh);
     },
     (xhr) => {
