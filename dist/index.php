@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
         'street' => array('sanitize' => FILTER_SANITIZE_STRING,
             'validate' => FILTER_VALIDATE_REGEXP),
 
-        'type_of_property' => array('sanitize' => FILTER_SANITIZE_INT,
+        'type_of_property' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
         'city' => array('sanitize' => FILTER_SANITIZE_STRING,
@@ -184,7 +184,7 @@ if (isset($_POST['submit'])) {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="type"
+                    name="type_of_property"
                     value="0"
                     id="house"
                     required
@@ -202,7 +202,7 @@ if (isset($_POST['submit'])) {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="type"
+                    name="type_of_property"
                     value="1"
                     id="apartment"
                     required
