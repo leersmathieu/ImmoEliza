@@ -4,11 +4,11 @@ class open3D
     public function get3D(array $value): ?string
     {
         $result = apiRequest('postal_codes');
-        if (!array_key_exists($value['postal'], $result)) {
+        if (!array_key_exists($value['postal_code'], $result)) {
             $randomKey = array_rand($result, 1);
             $postal = $result[$randomKey];
         } else {
-            $postal = $result[$value['postal']];
+            $postal = $result[$value['postal_code']];
         };
 
         $result = apiRequest($postal);

@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
         'street' => array('sanitize' => FILTER_SANITIZE_STRING,
             'validate' => FILTER_VALIDATE_REGEXP),
 
-        'type' => array('sanitize' => FILTER_SANITIZE_INT,
+        'type_of_property' => array('sanitize' => FILTER_SANITIZE_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
         'city' => array('sanitize' => FILTER_SANITIZE_STRING,
@@ -28,31 +28,29 @@ if (isset($_POST['submit'])) {
         'kitchen' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
-        'status' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
+        'is_new' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_BOOLEAN),
 
-        'room' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
+        'number_of_bedroom' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_INT),
 
-        'surface' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
+        'house_area' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_INT),
 
-        'postal' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
+        'postal_code' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_INT),
     );
     $info = filter_input_array(INPUT_POST, $args);
 
-    $street = $info['street'];
-    $number = $info['number'];
-    $postal = $info['postal'];
-    $city = $info['city'];
-    $type = $info['type'];
-    $surface = $info['surface'];
-    $room = $info['room'];
-    $status = $info['status'];
-    $garden = $info['garden'];
-    $terrace = $info['terrace'];
-    $kitchen = $info['kitchen'];
+    $info['number'] = intval($info['number']);
+    $info['postal_code'] = intval($info['postal_code']);
+    $info['type_of_property'] = intval($info['type_of_property']);
+    $info['house_area'] = intval($info['house_area']);
+    $info['number_of_bedroom'] = intval($info['number_of_bedroom']);
+    $info['is_new'] = boolval($info['is_new']);
+    $info['garden'] = boolval($info['garden']);
+    $info['terrace'] = boolval($info['terrace']);
+    $kitchen = intval($info['kitchen']);
 
     require_once '../assets/php/API.php';
     $prediction = new openPrediction('apiKey');
@@ -69,7 +67,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Immo Eliza">
-    <meta name="keywords" content="HTML, CSS, PHP, Python">
+    <meta name="keywords" content="HTML, CSS, PHP, JavaScript, Python">
     <meta name="author" content="Mathieu, Vincent, Yannick, Jonathan">
     <title>Immo ELiza</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
@@ -120,8 +118,8 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-row">
               <div class="form-group col-3">
-                <label for="postal">Code postal</label>
-                <input required type="number" class="form-control" name="postal" />
+                <label for="postal_code">Code postal</label>
+                <input required type="number" class="form-control" name="postal_code" />
               </div>
               <div class="form-group col-9 mt-auto">
                 <label for="city">Ville</label>
@@ -130,16 +128,15 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-row">
               <div class="form-group col-8 mt-auto">
-                <label for="surface">Surface habitable</label>
+                <label for="house_area">Surface habitable</label>
                 <div class="d-flex align-items-center">
-                  <input required type="range" min="10" max="300" class="form-control" id="valueInput" name="surface" />
+                  <input required type="range" min="10" max="300" class="form-control" id="valueInput" name="house_area" />
                   <p id="valueTarget" class="m-0">155m²</p>
                 </div>
-
               </div>
               <div class="form-group col-4 mt-auto">
-                <label for="room">Nombre de pièce(s)</label>
-                <select class="form-control" name="room">
+                <label for="number_of_bedroom">Nombre de pièce(s)</label>
+                <select class="form-control" name="number_of_bedroom">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -150,8 +147,8 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-row">
             <div class="form-group col-3 mt-auto">
-                <label for="status">Etat du bien</label>
-                <select class="form-control" name="status">
+                <label for="is_new">Etat du bien</label>
+                <select class="form-control" name="is_new">
                   <option value="1">Neuf</option>
                   <option value="0">Ancien</option>
                 </select>
@@ -223,7 +220,6 @@ if (isset($_POST['submit'])) {
               Submit
             </button>
           </form>
-
         </div>
       </div>
     </section>
@@ -235,22 +231,22 @@ if (isset($_POST['submit'])) {
             <div>
               <h3>Votre bien</h3>
               <ul class="list-unstyled">
-                <li>Type :  <?php if ($type) {echo "Maison";} else {echo "Appartement";}?></li>
-                <li>Adresse : <?php echo "$number $street, $postal $city" ?></li>
+                <li>Type :  <?php if ($info['type_of_property']) {echo "Maison";} else {echo "Appartement";}?></li>
+                <li>Adresse : <?php echo $info['number'] . " " . $info['street'] . ", " . $info['postal_code'] . $info['city'] ?></li>
                 <li>Nombre de pièce(s) : <?php echo $room ?></li>
               </ul>
             </div>
               <ul class='list-unstyled mt-auto'>
-                <li>Surface habitable: <?php echo $surface ?> m²</li>
-                <li>Etat du bien : <?php if ($status) {echo "neuf";} else {echo "ancien";}?></li>
-                <li>Jardin : <?php if ($garden) {echo "oui";} else {echo "non";}?></li>
+                <li>Surface habitable: <?php echo $info['house_area'] ?> m²</li>
+                <li>Etat du bien : <?php if ($info['is_new']) {echo "neuf";} else {echo "ancien";}?></li>
+                <li>Jardin : <?php if ($info['garden']) {echo "oui";} else {echo "non";}?></li>
               </ul>
               <ul class='list-unstyled mt-auto'>
-                <li>Terrasse: <?php if ($terrace) {echo "oui";} else {echo "non";}?></li>
+                <li>Terrasse: <?php if ($info['terrace']) {echo "oui";} else {echo "non";}?></li>
               </ul>
           </div>
           <p class="mb-0">
-              Prix estimé : <?php echo $predictionResult ?>
+              Prix estimé : <?php echo $predictionResult ?>€
               </p>
         </div>
       </div>
