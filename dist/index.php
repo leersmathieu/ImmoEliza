@@ -59,6 +59,7 @@ if (isset($_POST['submit'])) {
     require_once '../assets/php/3Dapi.php';
     $test = new open3D('apiKey');
     $testResult = $test->get3D($info);
+
 }
 ?>
 <!DOCTYPE html>
@@ -135,7 +136,7 @@ if (isset($_POST['submit'])) {
                 </div>
               </div>
               <div class="form-group col-4 mt-auto">
-                <label for="number_of_bedroom">Nombre de pièce(s)</label>
+                <label for="number_of_bedroom">Nombre de chambre(s)</label>
                 <select class="form-control" name="number_of_bedroom">
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -184,7 +185,7 @@ if (isset($_POST['submit'])) {
                     class="form-check-input"
                     type="radio"
                     name="type"
-                    value="1"
+                    value="0"
                     id="house"
                   />
                   <label for="house">
@@ -201,7 +202,7 @@ if (isset($_POST['submit'])) {
                     class="form-check-input"
                     type="radio"
                     name="type"
-                    value="0"
+                    value="1"
                     id="apartment"
                   />
                   <label for="apartment">
@@ -231,9 +232,9 @@ if (isset($_POST['submit'])) {
             <div>
               <h3>Votre bien</h3>
               <ul class="list-unstyled">
-                <li>Type :  <?php if ($info['type_of_property']) {echo "Maison";} else {echo "Appartement";}?></li>
+                <li>Type :  <?php if ($info['type_of_property']) {echo "Appartement";} else {echo "Maison";}?></li>
                 <li>Adresse : <?php echo $info['number'] . " " . $info['street'] . ", " . $info['postal_code'] . $info['city'] ?></li>
-                <li>Nombre de pièce(s) : <?php echo $room ?></li>
+                <li>Nombre de chambre(s) : <?php echo $info['number_of_bedroom'] ?></li>
               </ul>
             </div>
               <ul class='list-unstyled mt-auto'>
@@ -252,7 +253,7 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="row mt-4">
         <div class="col-12 col-md-4 offset-md-1 p-0 d-flex align-items-center">
-            <iframe class="boxShadow map" width="100%" height="400" src="https://maps.google.com/maps?q=<?php echo $street . '+' . $number . '+' . $postal . '+' . $city; ?>&output=embed"></iframe>
+            <iframe class="boxShadow map" width="100%" height="400" src="https://maps.google.com/maps?q=<?php echo $info['street'] . '+' . $info['number'] . '+' . $info['postal_code'] . '+' . $info['city']; ?>&output=embed"></iframe>
         </div>
         <div id="3dTarget" class="col-12 col-md-5 offset-md-1 p-0 mt-4 mt-md-0">
 
