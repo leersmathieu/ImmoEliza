@@ -1,12 +1,6 @@
 <?php
 class open3D
 {
-    /* private $apiKey;
-
-    public function _construct(string $apiKey)
-    {
-    $this->apiKey = $apiKey;
-    } */
     public function get3D(array $value): ?string
     {
         $result = apiRequest('postal_codes');
@@ -14,7 +8,7 @@ class open3D
             $randomKey = array_rand($result, 1);
             $postal = $result[$randomKey];
         } else {
-            $postal = $value['postal'];
+            $postal = $result[$value['postal']];
         };
 
         $result = apiRequest($postal);
@@ -22,11 +16,10 @@ class open3D
             $randomKey = array_rand($result, 1);
             $street = $result[$randomKey];
         } else {
-            $street = $value['street'];
+            $street = $result[$value['street']];
         };
 
         $result = apiRequest($postal . "/" . $street);
-
         if (!array_key_exists($value['number'], $result)) {
             $randomKey = array_rand($result, 1);
             $id = $result[$randomKey];
@@ -44,7 +37,6 @@ function apiRequest($url)
     $curl = curl_init("https://static.wallonia.ml/file/wallonia-lidar/web/$url.json");
     curl_setopt_array($curl, [
         CURLOPT_RETURNTRANSFER => true,
-        /* CURL_CAINFO => dirname(__DIR__) . DIRECTORY_SEPARATOR . 'certif.cer', */
         CURLOPT_TIMEOUT => 1,
     ]);
     $data = curl_exec($curl);

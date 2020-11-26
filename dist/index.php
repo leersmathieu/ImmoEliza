@@ -75,7 +75,6 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script src="../assets/js/inputRange.js"></script>
     <?php echo "<script src='main.js'></script>"; ?>
-
 </head>
 
 <body class="<?php echo $bgAnimation ?>">
@@ -257,9 +256,9 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="row mt-4">
         <div class="col-12 col-md-4 offset-md-1 p-0 d-flex align-items-center">
-            <iframe class="boxShadow" width="100%" height="400" src="https://maps.google.com/maps?q=<?php echo $street . '+' . $number . '+' . $postal . '+' . $city; ?>&output=embed"></iframe>
+            <iframe class="boxShadow map" width="100%" height="400" src="https://maps.google.com/maps?q=<?php echo $street . '+' . $number . '+' . $postal . '+' . $city; ?>&output=embed"></iframe>
         </div>
-        <div id="3dTarget" class="col-12 col-md-5 offset-md-1 boxShadow p-0 mt-4 mt-md-0">
+        <div id="3dTarget" class="col-12 col-md-5 offset-md-1 p-0 mt-4 mt-md-0">
 
         </div>
       </div>

@@ -10925,7 +10925,6 @@ section {
 
 .mainForm {
   border: solid 3px #021844;
-  border-radius: 20px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.9);
 }
@@ -10933,6 +10932,18 @@ section {
 .boxShadow {
   -webkit-box-shadow: 10px 10px 12px 0px black;
           box-shadow: 10px 10px 12px 0px black;
+  border-radius: 20px;
+}
+
+canvas {
+  border: solid 3px #021844;
+  -webkit-box-shadow: 10px 10px 12px 0px black;
+          box-shadow: 10px 10px 12px 0px black;
+  border-radius: 20px;
+}
+
+.map {
+  border: solid 3px #021844;
 }
 
 .submitButton {
@@ -10953,7 +10964,6 @@ section {
 .info {
   border: solid 3px #021844;
   background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
   padding: 10px;
 }
 
@@ -10966,10 +10976,6 @@ section {
           animation: appear 2s ease-in-out forwards;
 }
 
-.houseTemp {
-  border-radius: 20px;
-}
-
 footer {
   margin-top: 5rem;
   background: rgba(255, 255, 255, 0.9);
@@ -10977,9 +10983,5 @@ footer {
 
 ul {
   list-style-position: inside;
-}
-
-iframe {
-  border-radius: 20px;
 }
 /*# sourceMappingURL=style.css.map */

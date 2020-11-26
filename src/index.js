@@ -3,7 +3,6 @@ import { OrbitControls } from "../node_modules/three/examples/jsm/controls/Orbit
 import { PLYLoader } from "../node_modules/three/examples/jsm/loaders/PLYLoader";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("insideIndex");
   const displayTarget = document.getElementById("3dTarget");
   let data;
   await ajaxRequest();
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const renderer = new THREE.WebGLRenderer();
   renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.setSize(displayTarget.clientWidth, displayTarget.clientHeight);
-  displayTarget.appendChild(renderer.domElement);
+  renderer.domElement.displayTarget.appendChild(renderer.domElement);
 
   const controls = new OrbitControls(camera, renderer.domElement);
 
