@@ -298,7 +298,7 @@ if (isset($_POST['submit'])) {
         <!-- Footer Links -->
         <!-- Copyright -->
         <div class="footer-copyright text-center pb-3">© 2020 Copyright:
-            <a href="#"> immoeliza.com</a>
+            <a href="#"> http://tamikara.xyz/immo-eliza/prediction/ </a>
         </div>
         <!-- Copyright -->
     </footer>

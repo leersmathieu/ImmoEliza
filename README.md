@@ -6,6 +6,12 @@ The duration of this project is one week.
 
 Group 7 : Yannick (WebDev), Jonathan (WebDev), Mathieu (AI), Vincent (AI).
 
+The github of the AI part : [ImmoEliza-API](https://github.com/leersmathieu/ImmoEliza-API)
+
+## Result :
+
+You can test our project here : http://tamikara.xyz/immo-eliza/prediction/
+
 ## Web development:
 
 Our goal is to design an internal application for a real estate agency so that it can deduct a price for a certain type of dwelling according to different criteria. We develop this application in HTML, CSS, PHP, with integration of an API.
@@ -15,7 +21,6 @@ Our goal is to design an internal application for a real estate agency so that i
 Their goal is to design the API used for the application by developing a consistent set of data to return reliable values during the operation of the application.
 
 ## Step to realise (WebDev)
-
 ### 1. Form alpha
 
 Create a first version of the form just to have an idea of the style.
