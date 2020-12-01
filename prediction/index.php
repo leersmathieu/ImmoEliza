@@ -39,6 +39,10 @@ if (isset($_POST['submit'])) {
 
         'postal_code' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
             'validate' => FILTER_VALIDATE_INT),
+        'facade' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_INT),
+        'pool' => array('sanitize' => FILTER_SANITIZE_NUMBER_INT,
+            'validate' => FILTER_VALIDATE_INT),
     );
     $info = filter_input_array(INPUT_POST, $args);
 
@@ -50,6 +54,8 @@ if (isset($_POST['submit'])) {
     $info['is_new'] = intval($info['is_new']);
     $info['garden'] = intval($info['garden']);
     $info['terrace'] = intval($info['terrace']);
+    $info['facade'] = intval($info['facade']);
+    $info['pool'] = intval($info['pool']);
     $kitchen = intval($info['kitchen']);
 
     require_once '../assets/php/API.php';
@@ -131,8 +137,8 @@ if (isset($_POST['submit'])) {
               <div class="form-group col-8 mt-auto">
                 <label for="house_area">Surface habitable</label>
                 <div class="d-flex align-items-center">
-                  <input required type="range" min="10" max="300" class="form-control" id="valueInput" name="house_area" />
-                  <p id="valueTarget" class="m-0">155m²</p>
+                  <input required type="range" min="10" max="900" class="form-control" id="valueInput" name="house_area" />
+                  <p id="valueTarget" class="m-0">455m²</p>
                 </div>
               </div>
               <div class="form-group col-4 mt-auto">
@@ -147,36 +153,53 @@ if (isset($_POST['submit'])) {
               </div>
             </div>
             <div class="form-row">
-            <div class="form-group col-3 mt-auto">
+            <div class="form-group col-4 mt-auto">
                 <label for="is_new">Etat du bien</label>
                 <select class="form-control" name="is_new">
-                  <option value="1">Neuf</option>
-                  <option value="0">Ancien</option>
+                  <option value="1">Bon</option>
+                  <option value="0">À rénover</option>
                 </select>
               </div>
-              <div class="form-group col-3">
+              <div class="form-group col-4">
                 <label for="garden">Jardin</label>
                 <select class="form-control" name="garden">
                   <option value="1">Oui</option>
                   <option value="0">Non</option>
                 </select>
               </div>
-              <div class="form-group col-3">
+              <div class="form-group col-4">
                 <label for="terrace">Terrasse</label>
                 <select class="form-control" name="terrace">
                   <option value="1">Oui</option>
                   <option value="0">Non</option>
                 </select>
               </div>
-              <div class="form-group col-3">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-4">
                 <label for="kitchen">Cuisine équipée</label>
                 <select class="form-control" name="kitchen">
                   <option value="1">Oui</option>
                   <option value="0">Non</option>
                 </select>
               </div>
+              <div class="form-group col-4">
+                <label for="facade">Nombre de facades</label>
+                <select class="form-control" name="facade">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="form-group col-4">
+                <label for="pool">Piscine</label>
+                <select class="form-control" name="pool">
+                  <option value="1">Oui</option>
+                  <option value="0">Non</option>
+                </select>
+              </div>
             </div>
-
             <div class="form-row d-flex flex-column">
               <label class="form-check-label"> Type de bien</label>
               <div class="d-flex">
@@ -241,11 +264,13 @@ if (isset($_POST['submit'])) {
             </div>
               <ul class='list-unstyled mt-auto'>
                 <li>Surface habitable: <?php echo $info['house_area'] ?> m²</li>
-                <li>Etat du bien : <?php if ($info['is_new']) {echo "neuf";} else {echo "ancien";}?></li>
+                <li>Etat du bien : <?php if ($info['is_new']) {echo "Bon";} else {echo "À rénover";}?></li>
                 <li>Jardin : <?php if ($info['garden']) {echo "oui";} else {echo "non";}?></li>
               </ul>
               <ul class='list-unstyled mt-auto'>
                 <li>Terrasse: <?php if ($info['terrace']) {echo "oui";} else {echo "non";}?></li>
+                <li>Nombre de facade(s) : <?php echo $info['facade'] ?></li>
+                <li>Piscine : <?php if ($info['pool']) {echo "oui";} else {echo "non";}?></li>
               </ul>
           </div>
           <p class="mb-0">
@@ -253,6 +278,7 @@ if (isset($_POST['submit'])) {
               </p>
         </div>
       </div>
+
       <div class="row mt-4">
         <div class="col-12 col-md-4 offset-md-1 p-0 d-flex align-items-center">
             <iframe class="boxShadow map" width="100%" height="400" src="https://maps.google.com/maps?q=<?php echo $info['street'] . '+' . $info['number'] . '+' . $info['postal_code'] . '+' . $info['city']; ?>&output=embed"></iframe>

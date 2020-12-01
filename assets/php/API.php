@@ -20,7 +20,9 @@ class openPrediction
                                     "house_area": ' . $value["house_area"] . ',
                                     "number_of_bedroom": ' . $value["number_of_bedroom"] . ',
                                     "garden": ' . $value["garden"] . ',
-                                    "terrace": ' . $value["terrace"] . '
+                                    "terrace": ' . $value["terrace"] . ',
+                                    "number_of_facades": ' . $value["facade"] . ',
+                                    "swimming_pool": ' . $value["pool"] . '
                                 }
                   ',
             CURLOPT_HTTPHEADER => array(
