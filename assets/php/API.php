@@ -22,7 +22,8 @@ class openPrediction
                                     "garden": ' . $value["garden"] . ',
                                     "terrace": ' . $value["terrace"] . ',
                                     "number_of_facades": ' . $value["facade"] . ',
-                                    "swimming_pool": ' . $value["pool"] . '
+                                    "swimming_pool": ' . $value["pool"] . ',
+                                    "fully_equipped_kitchen": ' . $value["kitchen"] . '
                                 }
                   ',
             CURLOPT_HTTPHEADER => array(

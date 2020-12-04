@@ -156,22 +156,22 @@ if (isset($_POST['submit'])) {
             <div class="form-group col-4 mt-auto">
                 <label for="is_new">Etat du bien</label>
                 <select class="form-control" name="is_new">
-                  <option value="1">Bon</option>
                   <option value="0">À rénover</option>
+                  <option value="1">Bon</option>
                 </select>
               </div>
               <div class="form-group col-4">
                 <label for="garden">Jardin</label>
                 <select class="form-control" name="garden">
-                  <option value="1">Oui</option>
                   <option value="0">Non</option>
+                  <option value="1">Oui</option>
                 </select>
               </div>
               <div class="form-group col-4">
                 <label for="terrace">Terrasse</label>
                 <select class="form-control" name="terrace">
-                  <option value="1">Oui</option>
                   <option value="0">Non</option>
+                  <option value="1">Oui</option>
                 </select>
               </div>
             </div>
@@ -179,8 +179,8 @@ if (isset($_POST['submit'])) {
               <div class="form-group col-4">
                 <label for="kitchen">Cuisine équipée</label>
                 <select class="form-control" name="kitchen">
-                  <option value="1">Oui</option>
                   <option value="0">Non</option>
+                  <option value="1">Oui</option>
                 </select>
               </div>
               <div class="form-group col-4">
@@ -195,8 +195,8 @@ if (isset($_POST['submit'])) {
               <div class="form-group col-4">
                 <label for="pool">Piscine</label>
                 <select class="form-control" name="pool">
-                  <option value="1">Oui</option>
                   <option value="0">Non</option>
+                  <option value="1">Oui</option>
                 </select>
               </div>
             </div>
