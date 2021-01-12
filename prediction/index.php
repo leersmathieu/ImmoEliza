@@ -76,7 +76,10 @@ if (isset($_POST['submit'])) {
     <meta name="description" content="Immo Eliza">
     <meta name="keywords" content="HTML, CSS, PHP, JavaScript, Python">
     <meta name="author" content="Mathieu, Vincent, Yannick, Jonathan">
-    <title>Immo ELiza</title>
+    <meta property="og:image" content="http://tamikara.xyz/immo-eliza/assets/images/immoeliza-lnkd.png">
+    <meta property="og:description" content="Display and get price prediction about any house and apartment in Wallonia ">
+    <meta property="og:title" content="Immo Eliza">
+    <title>Immo Eliza</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script src="../assets/js/inputRange.js"></script>
     <?php echo "<script src='main.js'></script>"; ?>
